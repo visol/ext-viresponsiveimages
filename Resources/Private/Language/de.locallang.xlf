@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-11-24T11:22:35Z" product-name="customresponsiveimages">
+		<header/>
+		<body>
+			<trans-unit id="em.enableDefaultConfiguration">
+				<target>Standard-TSConfig für responsive Images aktivieren. Falls diese Option deaktiviert ist, muss die TSConfig manuell eingebunden werden.</target>
+			</trans-unit>
+			<trans-unit id="group.intext.label">
+				<target>Im text</target>
+			</trans-unit>
+			<trans-unit id="group.besidetext.label">
+				<target>Neben dem Text</target>
+			</trans-unit>
+			<trans-unit id="group.gallery.label">
+				<target>Galerie</target>
+			</trans-unit>
+			<trans-unit id="item.abovetext.100">
+				<target>Oberhalb des Texts, volle Breite</target>
+			</trans-unit>
+			<trans-unit id="item.abovetext.50">
+				<target>Oberhalb des Texts, 1/2</target>
+			</trans-unit>
+			<trans-unit id="item.abovetext.33">
+				<target>Oberhalb des Texts, 1/3</target>
+			</trans-unit>
+			<trans-unit id="item.abovetext.25">
+				<target>Oberhalb des Texts, 1/4</target>
+			</trans-unit>
+			<trans-unit id="item.belowtext.100">
+				<target>Unterhalb des Texts, volle Breite</target>
+			</trans-unit>
+			<trans-unit id="item.belowtext.50">
+				<target>Unterhalb des Texts, 1/2</target>
+			</trans-unit>
+			<trans-unit id="item.belowtext.33">
+				<target>Unterhalb des Texts, 1/3</target>
+			</trans-unit>
+			<trans-unit id="item.belowtext.25">
+				<target>Unterhalb des Texts, 1/4</target>
+			</trans-unit>
+			<trans-unit id="item.intext.left.50">
+				<target>Im Text links, 1/2</target>
+			</trans-unit>
+			<trans-unit id="item.intext.left.33">
+				<target>Im Text links, 1/3</target>
+			</trans-unit>
+			<trans-unit id="item.intext.left.25">
+				<target>Im Text links, 1/4</target>
+			</trans-unit>
+			<trans-unit id="item.intext.left.12">
+				<target>Im Text links, 1/6</target>
+			</trans-unit>
+			<trans-unit id="item.intext.right.50">
+				<target>Im Text rechts, 1/2</target>
+			</trans-unit>
+			<trans-unit id="item.intext.right.33">
+				<target>Im Text rechts, 1/3</target>
+			</trans-unit>
+			<trans-unit id="item.intext.right.25">
+				<target>Im Text rechts, 1/4</target>
+			</trans-unit>
+			<trans-unit id="item.intext.right.12">
+				<target>Im Text rechts, 1/6</target>
+			</trans-unit>
+			<trans-unit id="item.besidetext.left.50">
+				<target>Neben dem Text links, 1/2</target>
+			</trans-unit>
+			<trans-unit id="item.besidetext.left.33">
+				<target>Neben dem Text links, 1/3</target>
+			</trans-unit>
+			<trans-unit id="item.besidetext.left.25">
+				<target>Neben dem Text links, 1/4</target>
+			</trans-unit>
+			<trans-unit id="item.besidetext.left.12">
+				<target>Neben dem Text links, 1/6</target>
+			</trans-unit>
+			<trans-unit id="item.besidetext.right.50">
+				<target>Neben dem Text rechts, 1/2</target>
+			</trans-unit>
+			<trans-unit id="item.besidetext.right.33">
+				<target>Neben dem Text rechts, 1/3</target>
+			</trans-unit>
+			<trans-unit id="item.besidetext.right.25">
+				<target>Neben dem Text rechts, 1/4</target>
+			</trans-unit>
+			<trans-unit id="item.besidetext.right.12">
+				<target>Neben dem Text rechts, 1/6</target>
+			</trans-unit>
+			<trans-unit id="item.gallery.2">
+				<target>2 Bilder pro Zeile</target>
+			</trans-unit>
+			<trans-unit id="item.gallery.3">
+				<target>3 Bilder pro Zeile</target>
+			</trans-unit>
+			<trans-unit id="item.gallery.4">
+				<target>4 Bilder pro Zeile</target>
+			</trans-unit>
+			<trans-unit id="item.gallery.6">
+				<target>6 Bilder pro Zeile</target>
+			</trans-unit>
+
+		</body>
+	</file>
+</xliff>

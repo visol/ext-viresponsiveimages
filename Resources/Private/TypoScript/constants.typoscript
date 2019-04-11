@@ -1,0 +1,10 @@
+##############################
+#### FLUID STYLED CONTENT ####
+##############################
+styles {
+    templates {
+        layoutRootPath = EXT:viresponsiveimages/Resources/Private/Layouts/ContentElements/
+        partialRootPath = EXT:viresponsiveimages/Resources/Private/Partials/ContentElements/
+        templateRootPath = EXT:viresponsiveimages/Resources/Private/Templates/ContentElements/
+    }
+}

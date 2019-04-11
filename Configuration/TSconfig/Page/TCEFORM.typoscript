@@ -1,0 +1,140 @@
+TCEFORM.tt_content {
+    # hide fields
+    imagewidth.disabled = 1
+    imageheight.disabled = 1
+    imageborder.disabled = 1
+    imagecaption_position.disabled = 1
+    image_noRows.disabled = 1
+    imagecols.disabled = 1
+
+    # responsive images orientations
+    imageorient {
+
+        # @todo groups not working yet
+        groups {
+            abovetext {
+                # Empty label means that there will be no optgroup
+                label =
+            }
+            belowtext {
+                # Empty label means that there will be no optgroup
+                label =
+            }
+            intext {
+                label = LLL:EXT:viresponsiveimages/Resources/Private/Language/locallang.xlf:group.intext.label
+            }
+            besidetext {
+                label = LLL:EXT:viresponsiveimages/Resources/Private/Language/locallang.xlf:group.besidetext.label
+            }
+            gallery {
+                label = LLL:EXT:viresponsiveimages/Resources/Private/Language/locallang.xlf:group.gallery.label
+            }
+        }
+
+        removeItems = 0,1,2,8,9,10,17,18,15,25,26
+
+        addItems {
+
+            # Group "abovetext"
+
+            100 = LLL:EXT:viresponsiveimages/Resources/Private/Language/locallang.xlf:item.abovetext.100
+            100.icon = EXT:viresponsiveimages/Resources/Public/Icons/Gif/above-100.gif
+            100.group = abovetext
+
+            101 = LLL:EXT:viresponsiveimages/Resources/Private/Language/locallang.xlf:item.abovetext.50
+            101.icon = EXT:viresponsiveimages/Resources/Public/Icons/Gif/above-100.gif
+
+            102 = LLL:EXT:viresponsiveimages/Resources/Private/Language/locallang.xlf:item.abovetext.33
+            102.icon = EXT:viresponsiveimages/Resources/Public/Icons/Gif/above-100.gif
+
+            103 = LLL:EXT:viresponsiveimages/Resources/Private/Language/locallang.xlf:item.abovetext.25
+            103.icon = EXT:viresponsiveimages/Resources/Public/Icons/Gif/above-100.gif
+
+            # Group "belowtext"
+
+            110 = LLL:EXT:viresponsiveimages/Resources/Private/Language/locallang.xlf:item.belowtext.100
+            110.icon = EXT:viresponsiveimages/Resources/Public/Icons/Gif/below-100.gif
+            110.group = belowtext
+
+            111 = LLL:EXT:viresponsiveimages/Resources/Private/Language/locallang.xlf:item.belowtext.50
+            111.icon = EXT:viresponsiveimages/Resources/Public/Icons/Gif/below-100.gif
+
+            112 = LLL:EXT:viresponsiveimages/Resources/Private/Language/locallang.xlf:item.belowtext.33
+            112.icon = EXT:viresponsiveimages/Resources/Public/Icons/Gif/below-100.gif
+
+            113 = LLL:EXT:viresponsiveimages/Resources/Private/Language/locallang.xlf:item.belowtext.25
+            113.icon = EXT:viresponsiveimages/Resources/Public/Icons/Gif/below-100.gif
+
+            # Group "intext"
+
+            120 = LLL:EXT:viresponsiveimages/Resources/Private/Language/locallang.xlf:item.intext.left.50
+            120.icon = EXT:viresponsiveimages/Resources/Public/Icons/Gif/intext-left-50.gif
+            120.group = intext
+
+            121 = LLL:EXT:viresponsiveimages/Resources/Private/Language/locallang.xlf:item.intext.left.33
+            121.icon = EXT:viresponsiveimages/Resources/Public/Icons/Gif/intext-left-33.gif
+
+            122 = LLL:EXT:viresponsiveimages/Resources/Private/Language/locallang.xlf:item.intext.left.25
+            122.icon = EXT:viresponsiveimages/Resources/Public/Icons/Gif/intext-left-25.gif
+
+            123 = LLL:EXT:viresponsiveimages/Resources/Private/Language/locallang.xlf:item.intext.left.12
+            123.icon = EXT:viresponsiveimages/Resources/Public/Icons/Gif/intext-left-12.gif
+
+            130 = LLL:EXT:viresponsiveimages/Resources/Private/Language/locallang.xlf:item.intext.right.50
+            130.icon = EXT:viresponsiveimages/Resources/Public/Icons/Gif/intext-right-50.gif
+
+            131 = LLL:EXT:viresponsiveimages/Resources/Private/Language/locallang.xlf:item.intext.right.33
+            131.icon = EXT:viresponsiveimages/Resources/Public/Icons/Gif/intext-right-33.gif
+
+            132 = LLL:EXT:viresponsiveimages/Resources/Private/Language/locallang.xlf:item.intext.right.25
+            132.icon = EXT:viresponsiveimages/Resources/Public/Icons/Gif/intext-right-25.gif
+
+            133 = LLL:EXT:viresponsiveimages/Resources/Private/Language/locallang.xlf:item.intext.right.12
+            133.icon = EXT:viresponsiveimages/Resources/Public/Icons/Gif/intext-right-12.gif
+
+            # Group "besidetext"
+
+            140 = LLL:EXT:viresponsiveimages/Resources/Private/Language/locallang.xlf:item.besidetext.left.50
+            140.icon = EXT:viresponsiveimages/Resources/Public/Icons/Gif/besidetext-left-50.gif
+            140.group = besidetext
+
+            141 = LLL:EXT:viresponsiveimages/Resources/Private/Language/locallang.xlf:item.besidetext.left.33
+            141.icon = EXT:viresponsiveimages/Resources/Public/Icons/Gif/besidetext-left-33.gif
+
+            142 = LLL:EXT:viresponsiveimages/Resources/Private/Language/locallang.xlf:item.besidetext.left.25
+            142.icon = EXT:viresponsiveimages/Resources/Public/Icons/Gif/besidetext-left-25.gif
+
+            143 = LLL:EXT:viresponsiveimages/Resources/Private/Language/locallang.xlf:item.besidetext.left.12
+            143.icon = EXT:viresponsiveimages/Resources/Public/Icons/Gif/besidetext-left-12.gif
+
+            150 = LLL:EXT:viresponsiveimages/Resources/Private/Language/locallang.xlf:item.besidetext.right.50
+            150.icon = EXT:viresponsiveimages/Resources/Public/Icons/Gif/besidetext-right-50.gif
+
+            151 = LLL:EXT:viresponsiveimages/Resources/Private/Language/locallang.xlf:item.besidetext.right.33
+            151.icon = EXT:viresponsiveimages/Resources/Public/Icons/Gif/besidetext-right-33.gif
+
+            152 = LLL:EXT:viresponsiveimages/Resources/Private/Language/locallang.xlf:item.besidetext.right.25
+            152.icon = EXT:viresponsiveimages/Resources/Public/Icons/Gif/besidetext-right-25.gif
+
+            153 = LLL:EXT:viresponsiveimages/Resources/Private/Language/locallang.xlf:item.besidetext.right.12
+            153.icon = EXT:viresponsiveimages/Resources/Public/Icons/Gif/besidetext-right-12.gif
+
+            # Group "gallery"
+
+            160 = LLL:EXT:viresponsiveimages/Resources/Private/Language/locallang.xlf:item.gallery.2
+            160.icon = EXT:viresponsiveimages/Resources/Public/Icons/Gif/gallery-2.gif
+            160.group = gallery
+
+            161 = LLL:EXT:viresponsiveimages/Resources/Private/Language/locallang.xlf:item.gallery.3
+            161.icon = EXT:viresponsiveimages/Resources/Public/Icons/Gif/gallery-3.gif
+
+            162 = LLL:EXT:viresponsiveimages/Resources/Private/Language/locallang.xlf:item.gallery.4
+            162.icon = EXT:viresponsiveimages/Resources/Public/Icons/Gif/gallery-4.gif
+
+            163 = LLL:EXT:viresponsiveimages/Resources/Private/Language/locallang.xlf:item.gallery.6
+            163.icon = EXT:viresponsiveimages/Resources/Public/Icons/Gif/gallery-6.gif
+
+        }
+    }
+}
+

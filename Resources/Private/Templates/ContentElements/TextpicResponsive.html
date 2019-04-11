@@ -1,0 +1,186 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+<f:section name="Header">
+
+	<f:if condition="{gallery.position.noWrap} != 1">
+		<f:render partial="Header/All" arguments="{_all}" />
+	</f:if>
+
+</f:section>
+
+# switch to section based on imageorient key
+
+<f:section name="Main">
+	<f:render section="imageorient-{gallery.position.imageorient}" arguments="{_all}" />
+</f:section>
+
+# above text
+
+<f:section name="imageorient-100">
+	<div class="csc-textpic csc-textpic-responsive csc-textpic-abovetext csc-textpic-100">
+		<f:render partial="TextImageContent" arguments="{_all}" />
+	</div>
+</f:section>
+<f:section name="imageorient-101">
+	<div class="csc-textpic csc-textpic-responsive csc-textpic-abovetext csc-textpic-50">
+		<f:render partial="TextImageContent" arguments="{_all}" />
+	</div>
+</f:section>
+<f:section name="imageorient-102">
+	<div class="csc-textpic csc-textpic-responsive csc-textpic-abovetext csc-textpic-33">
+		<f:render partial="TextImageContent" arguments="{_all}" />
+	</div>
+</f:section>
+<f:section name="imageorient-103">
+	<div class="csc-textpic csc-textpic-responsive csc-textpic-abovetext csc-textpic-25">
+		<f:render partial="TextImageContent" arguments="{_all}" />
+	</div>
+</f:section>
+
+# below text
+
+<f:section name="imageorient-110">
+	<div class="csc-textpic csc-textpic-responsive csc-textpic-belowtext csc-textpic-100">
+		<f:render partial="TextImageContent" arguments="{_all}" />
+	</div>
+</f:section>
+<f:section name="imageorient-111">
+	<div class="csc-textpic csc-textpic-responsive csc-textpic-belowtext csc-textpic-50">
+		<f:render partial="TextImageContent" arguments="{_all}" />
+	</div>
+</f:section>
+<f:section name="imageorient-112">
+	<div class="csc-textpic csc-textpic-responsive csc-textpic-belowtext csc-textpic-33">
+		<f:render partial="TextImageContent" arguments="{_all}" />
+	</div>
+</f:section>
+<f:section name="imageorient-113">
+	<div class="csc-textpic csc-textpic-responsive csc-textpic-belowtext csc-textpic-25">
+		<f:render partial="TextImageContent" arguments="{_all}" />
+	</div>
+</f:section>
+
+# intext, left
+
+<f:section name="imageorient-120">
+	<div class="csc-textpic csc-textpic-responsive csc-textpic-intext-left csc-textpic-50">
+		<f:render partial="TextImageContent" arguments="{_all}" />
+	</div>
+</f:section>
+<f:section name="imageorient-121">
+	<div class="csc-textpic csc-textpic-responsive csc-textpic-intext-left csc-textpic-33">
+		<f:render partial="TextImageContent" arguments="{_all}" />
+	</div>
+</f:section>
+<f:section name="imageorient-122">
+	<div class="csc-textpic csc-textpic-responsive csc-textpic-intext-left csc-textpic-25">
+		<f:render partial="TextImageContent" arguments="{_all}" />
+	</div>
+</f:section>
+<f:section name="imageorient-123">
+	<div class="csc-textpic csc-textpic-responsive csc-textpic-intext-left csc-textpic-12">
+		<f:render partial="TextImageContent" arguments="{_all}" />
+	</div>
+</f:section>
+
+# intext, right
+
+<f:section name="imageorient-130">
+	<div class="csc-textpic csc-textpic-responsive csc-textpic-intext-right csc-textpic-50">
+		<f:render partial="TextImageContent" arguments="{_all}" />
+	</div>
+</f:section>
+<f:section name="imageorient-131">
+	<div class="csc-textpic csc-textpic-responsive csc-textpic-intext-right csc-textpic-33">
+		<f:render partial="TextImageContent" arguments="{_all}" />
+	</div>
+</f:section><f:section name="imageorient-132">
+	<div class="csc-textpic csc-textpic-responsive csc-textpic-intext-right csc-textpic-25">
+		<f:render partial="TextImageContent" arguments="{_all}" />
+	</div>
+</f:section><f:section name="imageorient-133">
+	<div class="csc-textpic csc-textpic-responsive csc-textpic-intext-right csc-textpic-12">
+		<f:render partial="TextImageContent" arguments="{_all}" />
+	</div>
+</f:section>
+
+# besidetext, left
+
+<f:section name="imageorient-140">
+	<div class="csc-textpic csc-textpic-responsive csc-textpic-besidetext-left csc-textpic-50">
+		<f:render partial="TextImageContent" arguments="{_all}" />
+	</div>
+</f:section>
+<f:section name="imageorient-141">
+	<div class="csc-textpic csc-textpic-responsive csc-textpic-besidetext-left csc-textpic-33">
+		<f:render partial="TextImageContent" arguments="{_all}" />
+	</div>
+</f:section>
+<f:section name="imageorient-142">
+	<div class="csc-textpic csc-textpic-responsive csc-textpic-besidetext-left csc-textpic-25">
+		<f:render partial="TextImageContent" arguments="{_all}" />
+	</div>
+</f:section>
+<f:section name="imageorient-143">
+	<div class="csc-textpic csc-textpic-responsive csc-textpic-besidetext-left csc-textpic-12">
+		<f:render partial="TextImageContent" arguments="{_all}" />
+	</div>
+</f:section>
+
+# besidetext, right
+
+<f:section name="imageorient-150">
+	<div class="csc-textpic csc-textpic-responsive csc-textpic-besidetext-right csc-textpic-50">
+		<f:render partial="TextImageContent" arguments="{_all}" />
+	</div>
+</f:section>
+<f:section name="imageorient-151">
+	<div class="csc-textpic csc-textpic-responsive csc-textpic-besidetext-right csc-textpic-33">
+		<f:render partial="TextImageContent" arguments="{_all}" />
+	</div>
+</f:section>
+<f:section name="imageorient-152">
+	<div class="csc-textpic csc-textpic-responsive csc-textpic-besidetext-right csc-textpic-25">
+		<f:render partial="TextImageContent" arguments="{_all}" />
+	</div>
+</f:section>
+<f:section name="imageorient-153">
+	<div class="csc-textpic csc-textpic-responsive csc-textpic-besidetext-right csc-textpic-12">
+		<f:render partial="TextImageContent" arguments="{_all}" />
+	</div>
+</f:section>
+
+# gallery
+
+<f:section name="imageorient-160">
+	<div class="csc-textpic csc-textpic-responsive csc-textpic-gallery csc-textpic-gallery-2">
+		<f:render partial="TextImageContent" arguments="{_all}" />
+	</div>
+</f:section>
+<f:section name="imageorient-161">
+	<div class="csc-textpic csc-textpic-responsive csc-textpic-gallery csc-textpic-gallery-3">
+		<f:render partial="TextImageContent" arguments="{_all}" />
+	</div>
+</f:section>
+<f:section name="imageorient-162">
+	<div class="csc-textpic csc-textpic-responsive csc-textpic-gallery csc-textpic-gallery-4">
+		<f:render partial="TextImageContent" arguments="{_all}" />
+	</div>
+</f:section>
+<f:section name="imageorient-163">
+	<div class="csc-textpic csc-textpic-responsive csc-textpic-gallery csc-textpic-gallery-6">
+		<f:render partial="TextImageContent" arguments="{_all}" />
+	</div>
+</f:section>
+
+
+<f:comment>
+
+	<!-- default fluid-styled-content -->
+	<div class="ce-textpic ce-{gallery.position.horizontal} ce-{gallery.position.vertical}{f:if(condition: gallery.position.noWrap, then: ' ce-nowrap')}">
+		<f:render partial="TextImageContent" arguments="{_all}" />
+	</div>
+
+</f:comment>
+
+</html>
