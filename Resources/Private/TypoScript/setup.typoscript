@@ -1,157 +1,17 @@
 config {
 	responsiveImage.sizes = 16, 48, 96, 160, 320, 480, 640, 960, 1024, 1440, 1920, 2560, 3840, 5120
 }
+
+page.includeJSFooterlibs {
+	lazysizes1respimg = EXT:viresponsiveimages/Resources/Private/Javascripts/ls.respimg.min.js
+	lazysizes2parentfit = EXT:viresponsiveimages/Resources/Private/Javascripts/ls.parent-fit.min.js
+	lazysizes3bgset = EXT:viresponsiveimages/Resources/Private/Javascripts/ls.bgset.min.js
+	lazysizes9core = EXT:viresponsiveimages/Resources/Private/Javascripts/lazysizes.min.js
+}
+
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:viresponsiveimages/Configuration/Styling/setup.typoscript">
 
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:viresponsiveimages/Resources/Private/TypoScript/ContentElement/Image.typoscript">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:viresponsiveimages/Resources/Private/TypoScript/ContentElement/Textpic.typoscript">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:viresponsiveimages/Resources/Private/TypoScript/ContentElement/Textmedia.typoscript">
 
-/*lib.responsiveImage {
-    default = IMAGE
-    default {
-        file.import.current = 1
-        altText.data = field:altText
-        titleText.data = field:titleText
-        layoutKey = picturefill
-        layout.picturefill < tt_content.image.20.1.layout.picturefill
-        sourceCollection < tt_content.image.20.1.sourceCollection
-		sourceCollection {
-			desktop {
-				maxW {
-					cObject {
-						userFunc {
-							colPos {
-								field >
-								value = 0
-							}
-							imageorient {
-								field >
-								value = newsList
-							}
-						}
-					}
-				}
-				if >
-			}
-			desktopRetina {
-				maxW {
-					cObject {
-						userFunc {
-							colPos {
-								field >
-								value = 0
-							}
-							imageorient {
-								field >
-								value = newsList
-							}
-						}
-					}
-				}
-				if >
-			}
-			middle {
-				maxW {
-					cObject {
-						userFunc {
-							colPos {
-								field >
-								value = 0
-							}
-							imageorient {
-								field >
-								value = newsList
-							}
-						}
-					}
-				}
-				if >
-			}
-			middleRetina {
-				maxW {
-					cObject {
-						userFunc {
-							colPos {
-								field >
-								value = 0
-							}
-							imageorient {
-								field >
-								value = newsList
-							}
-						}
-					}
-				}
-				if >
-			}
-			small {
-				maxW {
-					cObject {
-						userFunc {
-							colPos {
-								field >
-								value = 0
-							}
-							imageorient {
-								field >
-								value = newsList
-							}
-						}
-					}
-				}
-				if >
-			}
-			smallRetina {
-				maxW {
-					cObject {
-						userFunc {
-							colPos {
-								field >
-								value = 0
-							}
-							imageorient {
-								field >
-								value = newsList
-							}
-						}
-					}
-				}
-				if >
-			}
-		}
-		sourceCollection.galleryDesktop >
-		sourceCollection.galleryDesktopRetina >
-		sourceCollection.galleryMiddle >
-		sourceCollection.galleryMiddleRetina >
-		sourceCollection.gallerySmall >
-		sourceCollection.gallerySmallRetina >
-    }
-
-	# 33% Bildbreite
-    newsList < .default
-    newsList {
-  		sourceCollection {
-  			desktop.maxW.cObject.userFunc.imageorient.value = newsList
-  			desktopRetina.maxW.cObject.userFunc.imageorient.value = newsList
-  			middle.maxW.cObject.userFunc.imageorient.value = newsList
-  			middleRetina.maxW.cObject.userFunc.imageorient.value = newsList
-  			small.maxW.cObject.userFunc.imageorient.value = newsList
-  			smallRetina.maxW.cObject.userFunc.imageorient.value = newsList
-  		}
-    }
-
-	# 50% Bildbreite
-    newsDetail < .default
-    newsDetail {
-  		sourceCollection {
-  			desktop.maxW.cObject.userFunc.imageorient.value = newsDetail
-  			desktopRetina.maxW.cObject.userFunc.imageorient.value = newsDetail
-  			middle.maxW.cObject.userFunc.imageorient.value = newsDetail
-  			middleRetina.maxW.cObject.userFunc.imageorient.value = newsDetail
-  			small.maxW.cObject.userFunc.imageorient.value = newsDetail
-  			smallRetina.maxW.cObject.userFunc.imageorient.value = newsDetail
-  		}
-    }
-}
-*/
