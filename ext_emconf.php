@@ -10,7 +10,7 @@
  * "version" and "dependencies" must not be touched!
  ***************************************************************/
 
-$EM_CONF[$_EXTKEY] = array(
+$EM_CONF[$_EXTKEY] = [
 	'title' => 'Responsive Images for fluid-styled-content',
 	'description' => 'Configurable backend and frontend implementation of the responsive image handling.',
 	'category' => 'fe',
@@ -22,13 +22,11 @@ $EM_CONF[$_EXTKEY] = array(
 	'createDirs' => '',
 	'clearCacheOnLoad' => 0,
 	'version' => '0.9.1',
-	'constraints' => array(
-		'depends' => array(
-			'typo3' => '8.7.19-9.5.99',
-		),
-		'conflicts' => array(
-		),
-		'suggests' => array(
-		),
-	),
-);
+	'constraints' => [
+		'depends' => [
+			'typo3' => '8.7.25-9.5.99',
+        ],
+		'conflicts' => [],
+		'suggests' => [],
+    ],
+];
