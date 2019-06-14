@@ -4,7 +4,6 @@
 	"description": "Responsive images for fluid-styled-content",
 	"homepage": "https://github.com/visol/ext-viresponsiveimages",
 	"license": ["GPL-2.0+"],
-	"version": "1.0.4",
 	"require": {
 		"typo3/cms-core": ">8.7.25"
 	},
