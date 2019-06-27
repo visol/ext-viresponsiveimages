@@ -87,6 +87,9 @@
 			<trans-unit id="item.besidetext.right.12">
 				<source>Beside text right, 1/6</source>
 			</trans-unit>
+			<trans-unit id="item.gallery">
+				<source>Gallery</source>
+			</trans-unit>
 			<trans-unit id="item.gallery.2">
 				<source>2 images in a row</source>
 			</trans-unit>

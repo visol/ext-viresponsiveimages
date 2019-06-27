@@ -87,6 +87,9 @@
 			<trans-unit id="item.besidetext.right.12">
 				<target>Neben dem Text rechts, 1/6</target>
 			</trans-unit>
+			<trans-unit id="item.gallery">
+				<target>Galerie</target>
+			</trans-unit>
 			<trans-unit id="item.gallery.2">
 				<target>2 Bilder pro Zeile</target>
 			</trans-unit>
