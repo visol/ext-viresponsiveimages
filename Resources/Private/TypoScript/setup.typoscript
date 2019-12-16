@@ -5,7 +5,7 @@ config {
 page.includeJSFooterlibs {
 	lazysizes1respimg = EXT:viresponsiveimages/Resources/Private/Javascripts/lazysizes/plugins/respimg/ls.respimg.min.js
 	lazysizes2parentfit = EXT:viresponsiveimages/Resources/Private/Javascripts/lazysizes/plugins/parent-fit/ls.parent-fit.min.js
-	lazysizes3bgset = EXT:viresponsiveimages/Resources/Private/Javascripts/lazysizes/plugins/ls.bgset.min.js
+	lazysizes3bgset = EXT:viresponsiveimages/Resources/Private/Javascripts/lazysizes/plugins/bgset/ls.bgset.min.js
 	lazysizes9core = EXT:viresponsiveimages/Resources/Private/Javascripts/lazysizes/lazysizes.min.js
 }
 
