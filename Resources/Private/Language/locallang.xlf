@@ -73,7 +73,7 @@
 				<source>Beside text left, 1/4</source>
 			</trans-unit>
 			<trans-unit id="item.besidetext.left.12">
-				<source>Beside text left, 1/6</source>
+				<source>Beside text left, 1/8</source>
 			</trans-unit>
 			<trans-unit id="item.besidetext.right.50">
 				<source>Beside text right, 1/2</source>
@@ -85,7 +85,7 @@
 				<source>Beside text right, 1/4</source>
 			</trans-unit>
 			<trans-unit id="item.besidetext.right.12">
-				<source>Beside text right, 1/6</source>
+				<source>Beside text right, 1/8</source>
 			</trans-unit>
 			<trans-unit id="item.gallery">
 				<source>Gallery</source>

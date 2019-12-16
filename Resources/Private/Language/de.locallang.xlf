@@ -49,7 +49,7 @@
 				<target>Im Text links, 1/4</target>
 			</trans-unit>
 			<trans-unit id="item.intext.left.12">
-				<target>Im Text links, 1/6</target>
+				<target>Im Text links, 1/8</target>
 			</trans-unit>
 			<trans-unit id="item.intext.right.50">
 				<target>Im Text rechts, 1/2</target>
@@ -73,7 +73,7 @@
 				<target>Neben dem Text links, 1/4</target>
 			</trans-unit>
 			<trans-unit id="item.besidetext.left.12">
-				<target>Neben dem Text links, 1/6</target>
+				<target>Neben dem Text links, 1/8</target>
 			</trans-unit>
 			<trans-unit id="item.besidetext.right.50">
 				<target>Neben dem Text rechts, 1/2</target>
