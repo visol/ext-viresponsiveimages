@@ -3,15 +3,15 @@ config {
 }
 
 page.includeJSFooterlibs {
-	lazysizes1respimg = EXT:viresponsiveimages/Resources/Private/Javascripts/lazysizes/plugins/respimg/ls.respimg.min.js
-	lazysizes2parentfit = EXT:viresponsiveimages/Resources/Private/Javascripts/lazysizes/plugins/parent-fit/ls.parent-fit.min.js
-	lazysizes3bgset = EXT:viresponsiveimages/Resources/Private/Javascripts/lazysizes/plugins/bgset/ls.bgset.min.js
-	lazysizes9core = EXT:viresponsiveimages/Resources/Private/Javascripts/lazysizes/lazysizes.min.js
+	lazysizes1respimg = EXT:viresponsiveimages/Resources/Public/Javascripts/lazysizes/plugins/respimg/ls.respimg.min.js
+	lazysizes2parentfit = EXT:viresponsiveimages/Resources/Public/Javascripts/lazysizes/plugins/parent-fit/ls.parent-fit.min.js
+	lazysizes3bgset = EXT:viresponsiveimages/Resources/Public/Javascripts/lazysizes/plugins/bgset/ls.bgset.min.js
+	lazysizes9core = EXT:viresponsiveimages/Resources/Public/Javascripts/lazysizes/lazysizes.min.js
 }
 
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:viresponsiveimages/Configuration/Styling/setup.typoscript">
 
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:viresponsiveimages/Resources/Private/TypoScript/ContentElement/Image.typoscript">
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:viresponsiveimages/Resources/Private/TypoScript/ContentElement/Textpic.typoscript">
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:viresponsiveimages/Resources/Private/TypoScript/ContentElement/Textmedia.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:viresponsiveimages/Resources/Public/TypoScript/ContentElement/Image.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:viresponsiveimages/Resources/Public/TypoScript/ContentElement/Textpic.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:viresponsiveimages/Resources/Public/TypoScript/ContentElement/Textmedia.typoscript">
 
