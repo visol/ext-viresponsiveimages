@@ -65,7 +65,10 @@ use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 class ResponsiveImageViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\ImageViewHelper
 {
 
-    const RATIO_PATTERN = '/(\d):(\d)/';
+    /**
+     * allow multidigit ratio values like 1024:768 or 4:3
+     */
+    const RATIO_PATTERN = '/(\d+):(\d+)/';
 
 
     /**
@@ -113,7 +116,7 @@ class ResponsiveImageViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\ImageViewHe
         $this->registerArgument('sizes', 'string', 'Comma-separated list of image sizes');
         $this->registerArgument('ratio', 'string', 'Ratio of the image. This can be a float value (e.g. 1.5) or a ratio string (e.g. 1:2)');
         $this->registerArgument('maxWidth', 'int', 'maximum width of the image');
-        $this->registerArgument('maxHeight', 'int', 'minimum width of the image');
+        $this->registerArgument('maxHeight', 'int', 'maximum height of the image');
         $this->registerArgument('absolute', 'bool', 'Force absolute URL', false, false);
     }
 
