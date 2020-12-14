@@ -72,7 +72,7 @@ class SrcSetViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelp
     protected $imageService;
 
     /**
-     * @var \Visol\Userunilutemplate\Service\SrcSetService
+     * @var \Visol\Viresponsiveimages\Service\SrcSetService
      */
     protected $srcSetService;
 
