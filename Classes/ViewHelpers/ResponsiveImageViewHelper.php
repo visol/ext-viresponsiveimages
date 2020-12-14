@@ -77,12 +77,12 @@ class ResponsiveImageViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\ImageViewHe
     protected $tagName = 'img';
 
     /**
-     * @var \Visol\Userunilutemplate\Service\SrcSetService
+     * @var \Visol\Viresponsiveimages\Service\SrcSetService
      */
     protected $srcSetService;
 
     /**
-     * @param \Visol\Userunilutemplate\Service\SrcSetService $srcSetService
+     * @param \Visol\Viresponsiveimages\Service\SrcSetService $srcSetService
      */
     public function injectSrcSetService(\Visol\Viresponsiveimages\Service\SrcSetService $srcSetService)
     {
