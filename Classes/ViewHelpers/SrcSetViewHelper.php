@@ -85,9 +85,9 @@ class SrcSetViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelp
     }
 
     /**
-     * @param \Visol\Userunilutemplate\Service\SrcSetService $srcSetService
+     * @param \Visol\Viresponsiveimages\Service\SrcSetService $srcSetService
      */
-    public function injectSrcSetService(\Visol\Userunilutemplate\Service\SrcSetService $srcSetService)
+    public function injectSrcSetService(\Visol\Viresponsiveimages\Service\SrcSetService $srcSetService)
     {
         $this->srcSetService = $srcSetService;
     }
