@@ -90,7 +90,7 @@ class SrcSetService
 
             if ($ratio) {
                 $currentWidth = $currentMaximumWidth;
-                $currentMaximumHeight = $size / $ratio;
+                $currentMaximumHeight = floor($size / $ratio);
                 $currentHeight = $currentMaximumHeight;
 
                 if ($currentMaximumHeight > $assetHeight) {
