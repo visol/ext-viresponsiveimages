@@ -1,68 +1,19 @@
-Responsive Images Extension
+Responsive Images for TYPO3 CMS
 ===
 
-### JavaScripts
+This extensions provides a `ResponsiveImageViewHelper` and a `SrcSetViewHelper` to provide responsive images based on
+the srcset approach. It supports crop variants, but also defining an own ratio.
 
-#### Static
+While srcset is [supported in most current browsers](https://caniuse.com/srcset), for background images a similar approach
+with a custom `data-bgset` attributes can be used.
 
-The extension uses lazysizes.js along with the plugins respimg/ls.respimg.min.js ls.parent-fit.min.js
-and ls.bgset.min.js which are all included Resources/Private and referenced by
+### Usage in Fluid
 
-```
-page.includeJSFooterlibs {
-	lazysizes1respimg = EXT:viresponsiveimages/Resources/Private/Javascripts/lazysizes/plugins/respimg/ls.respimg.min.js
-	lazysizes2parentfit = EXT:viresponsiveimages/Resources/Private/Javascripts/lazysizes/plugins/parent-fit/ls.parent-fit.min.js
-	lazysizes3bgset = EXT:viresponsiveimages/Resources/Private/Javascripts/lazysizes/plugins/bgset/ls.bgset.min.js
-	lazysizes9core = EXT:viresponsiveimages/Resources/Private/Javascripts/lazysizes/lazysizes.min.js
-}
-```
-
-#### Install using npm
-
-The prefered way to include those libraries would be to disable the includes in your setup by
-
-```
-page.includeJSFooterlibs {
-	lazysizes1respimg >
-	lazysizes2parentfit >
-	lazysizes3bgset >
-	lazysizes9core >
-}
-```
-
-and install lazysizes by npm in your project
-
-```
-npm install --save lazysizes
-```
-
-or add lazysizes to the dependencies section of your packackge.json
-
-```
-"dependencies": {
-   ...
-   "lazysizes": "^5.1.1",
-   ...
-}
-```
-
-then choose your favourite way to build/include the sources from there.
-With **webpack** you would import the libraries in your main.js like:
-
-```
-import 'lazysizes/plugins/respimg/ls.respimg';
-import 'lazysizes/plugins/parent-fit/ls.parent-fit';
-import 'lazysizes/plugins/bgset/ls.bgset';
-import 'lazysizes/lazysizes';
-```
-
-#### Usage Example
-
-This example ist showing the setup for a header image, added in the page properties in a desktop and mobile version.
+This example is showing the setup for a header image, added in the page properties in a desktop and mobile version.
 
 Add ```{namespace viresp=Visol\Viresponsiveimages\ViewHelpers}```
- to your html template 
- 
+to your Fluid template
+
 ```
 <f:if condition="{page.files}">
     <f:if condition="{page.files.0.properties.crop}">
@@ -173,5 +124,67 @@ $GLOBALS['TCA']['pages']['types'][(string)\TYPO3\CMS\Frontend\Page\PageRepositor
 ];
 ``` 
 
+### JavaScripts
 
+I you want to support older browsers (e.g. IE) and/or use the bgset feature to create responsive background images,
+you need to use the lazysizes library.
 
+#### JavaScript bundled with this extension
+
+The extension uses lazysizes.js along with the plugins respimg/ls.respimg.min.js, ls.parent-fit.min.js
+and ls.bgset.min.js which are all included Resources/Private and included by
+
+```
+page.includeJSFooterlibs {
+	lazysizes1respimg = EXT:viresponsiveimages/Resources/Private/Javascripts/lazysizes/plugins/respimg/ls.respimg.min.js
+	lazysizes2parentfit = EXT:viresponsiveimages/Resources/Private/Javascripts/lazysizes/plugins/parent-fit/ls.parent-fit.min.js
+	lazysizes3bgset = EXT:viresponsiveimages/Resources/Private/Javascripts/lazysizes/plugins/bgset/ls.bgset.min.js
+	lazysizes9core = EXT:viresponsiveimages/Resources/Private/Javascripts/lazysizes/lazysizes.min.js
+}
+```
+
+#### Install using npm
+
+The preferred way to include those libraries would be to disable the includes in your setup through the following
+TypoScript configuration
+
+```
+page.includeJSFooterlibs {
+	lazysizes1respimg >
+	lazysizes2parentfit >
+	lazysizes3bgset >
+	lazysizes9core >
+}
+```
+
+and install lazysizes through npm/yarn in your project
+
+```
+npm install --save lazysizes
+```
+
+or add lazysizes to the dependencies section of your package.json
+
+```
+"dependencies": {
+   ...
+   "lazysizes": "^5.1.1",
+   ...
+}
+```
+
+Then choose your favourite way to build/include the sources from there.
+With **webpack** you would import the libraries in your main.js like:
+
+```
+import 'lazysizes/plugins/respimg/ls.respimg';
+import 'lazysizes/plugins/parent-fit/ls.parent-fit';
+import 'lazysizes/plugins/bgset/ls.bgset';
+import 'lazysizes/lazysizes';
+```
+
+### Credits
+
+https://www.npmjs.com/package/lazysizes
+
+visol digitale Dienstleistungen GmbH, www.visol.ch
