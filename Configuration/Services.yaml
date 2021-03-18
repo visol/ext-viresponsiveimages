@@ -1,0 +1,14 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Visol\Viresponsiveimages\:
+    resource: '../Classes/*'
+
+  Visol\Viresponsiveimages\Service\SrcSetService:
+    public: true
+
+  Visol\Viresponsiveimages\DataProcessing\ResponsiveGalleryProcessor:
+    public: true

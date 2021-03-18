@@ -7,7 +7,7 @@
 				<target>Standard-TSConfig für responsive Images aktivieren. Falls diese Option deaktiviert ist, muss die TSConfig manuell eingebunden werden.</target>
 			</trans-unit>
 			<trans-unit id="group.intext.label">
-				<target>Im text</target>
+				<target>Im Text</target>
 			</trans-unit>
 			<trans-unit id="group.besidetext.label">
 				<target>Neben dem Text</target>

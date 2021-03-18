@@ -1,5 +1,5 @@
 #
 # PageTS for viresponsiveimages
 #
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:viresponsiveimages/Configuration/TSconfig/Page/TCEFORM.typoscript">
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:viresponsiveimages/Configuration/TSconfig/Page/TCEMAIN.typoscript">
+@import 'EXT:viresponsiveimages/Configuration/TSconfig/Page/TCEFORM.typoscript'
+@import 'EXT:viresponsiveimages/Configuration/TSconfig/Page/TCEMAIN.typoscript'

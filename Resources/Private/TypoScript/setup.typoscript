@@ -9,9 +9,6 @@ page.includeJSFooterlibs {
 	lazysizes9core = EXT:viresponsiveimages/Resources/Private/Javascripts/lazysizes/lazysizes.min.js
 }
 
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:viresponsiveimages/Configuration/Styling/setup.typoscript">
-
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:viresponsiveimages/Resources/Private/TypoScript/ContentElement/Image.typoscript">
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:viresponsiveimages/Resources/Private/TypoScript/ContentElement/Textpic.typoscript">
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:viresponsiveimages/Resources/Private/TypoScript/ContentElement/Textmedia.typoscript">
-
+@import 'EXT:viresponsiveimages/Resources/Private/TypoScript/ContentElement/Image.typoscript'
+@import 'EXT:viresponsiveimages/Resources/Private/TypoScript/ContentElement/Textpic.typoscript'
+@import 'EXT:viresponsiveimages/Resources/Private/TypoScript/ContentElement/Textmedia.typoscript'

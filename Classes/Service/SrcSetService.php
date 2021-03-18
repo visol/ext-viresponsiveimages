@@ -14,24 +14,24 @@ namespace Visol\Viresponsiveimages\Service;
 use TYPO3\CMS\Core\Imaging\ImageManipulation\CropVariantCollection;
 use TYPO3\CMS\Core\Resource\AbstractFile;
 use TYPO3\CMS\Core\Resource\FileInterface;
+use TYPO3\CMS\Extbase\Service\ImageService;
 
 /**
  * Render the srcset attribute with responsive images. Accepts mostly the same parameters as the uri.image ViewHelper of the Neos.Media package:
  * asset, maximumWidth, maximumHeight, allowCropping, ratio.
- *
  */
 class SrcSetService
 {
 
     /**
-     * @var \TYPO3\CMS\Extbase\Service\ImageService
+     * @var ImageService
      */
     protected $imageService;
 
     /**
-     * @param \TYPO3\CMS\Extbase\Service\ImageService $imageService
+     * @param ImageService $imageService
      */
-    public function injectImageService(\TYPO3\CMS\Extbase\Service\ImageService $imageService)
+    public function injectImageService(ImageService $imageService)
     {
         $this->imageService = $imageService;
     }
@@ -43,10 +43,10 @@ class SrcSetService
      * @param float $ratio
      * @param int $maximumWidth
      * @param int $maximumHeight
-     * @param boolean $allowCropping
-     * @param int $quality
+     * @param string $crop
+     * @param string $cropVariant
      * @param array $sizes
-     * @param RequestInterface $request
+     * @param boolean $absolute
      * @return string
      * @throws \Exception
      */

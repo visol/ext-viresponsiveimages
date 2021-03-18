@@ -16,6 +16,8 @@ namespace Visol\Viresponsiveimages\ViewHelpers;
 
 use TYPO3\CMS\Core\Resource\Exception\ResourceDoesNotExistException;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3Fluid\Fluid\Core\ViewHelper\Exception;
 
 /**
  * Resizes a given image (if required) and renders the respective img tag
@@ -61,7 +63,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  * Could not get image resource for "NonExistingImage.png".
  * </output>
  */
-class SrcSetViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper
+class SrcSetViewHelper extends AbstractViewHelper
 {
 
     const RATIO_PATTERN = '/(\d):(\d)/';
@@ -122,7 +124,7 @@ class SrcSetViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelp
      *
      * @see https://docs.typo3.org/typo3cms/TyposcriptReference/ContentObjects/Image/
      *
-     * @throws \TYPO3\CMS\Fluid\Core\ViewHelper\Exception
+     * @throws Exception
      * @return string Rendered tag
      */
     public function render()
@@ -156,7 +158,7 @@ class SrcSetViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelp
             }
             $sizes = GeneralUtility::intExplode(',', $sizesCsv, true);
 
-            $srcSetString = $this->srcSetService->getSrcSetAttribute($image, $ratio, $maximumWidth, $maximumHeight, $crop, $cropVariant, $sizes, null);
+            $srcSetString = $this->srcSetService->getSrcSetAttribute($image, $ratio, $maximumWidth, $maximumHeight, $crop, $cropVariant, $sizes);
         } catch (ResourceDoesNotExistException $e) {
             // thrown if file does not exist
         } catch (\UnexpectedValueException $e) {
