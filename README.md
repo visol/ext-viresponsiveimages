@@ -28,30 +28,12 @@ to your Fluid template
                     additionalAttributes="{data-sizes: 'auto'}"
             />
             </div>
-            <div class="img-mobile hidden-sm hidden-md hidden-lg">
-                <f:comment>
-                    mobile image:
-                    if set in editor 'teaserImageMobile' cropping is applied.
-                    if not, the image is cropped in the given ratio from the center
-                </f:comment>
-                <viresp:responsiveImage
-                        cropVariant="headerImageMobile"
-                        treatIdAsReference="true"
-                        ratio="4:2"
-                        sizes="320,640"
-                        src="{page.files.0.uid}"
-                        class="img-autocropped"
-                        alt="{page.files.0.properties.alternative}"
-                        additionalAttributes="{data-sizes: 'auto'}"
-                />
-            </div>
         </f:then>
         <f:else>
             <div class="img-desktop hidden-xs">
                 <f:comment>
-                    no image cropping as ben seleted in the editor:
-                    the image weill be cropped in the given ratio relative to the center
-                    for desktop the full range of sizes will be generated
+                    no image cropping has been seleted in the editor:
+                    the image will be cropped in the given ratio relative to the center
                 </f:comment>
                 <viresp:responsiveImage
                     treatIdAsReference="true"
@@ -61,22 +43,6 @@ to your Fluid template
                     alt="{page.files.0.properties.alternative}"
                     additionalAttributes="{data-sizes: 'auto'}"
             />
-            </div>
-            <div class="img-mobile hidden-sm hidden-md hidden-lg">
-                <f:comment>
-                    no image cropping as ben seleted in the editor:
-                    the image weill be cropped in the given ratio relative to the center
-                    for mobile only the given sizes (comma separated) will be generated
-                </f:comment>
-                <viresp:responsiveImage
-                        treatIdAsReference="true"
-                        ratio="4:2"
-                        sizes="320,640"
-                        src="{page.files.0.uid}"
-                        class="img-autocropped"
-                        alt="{page.files.0.properties.alternative}"
-                        additionalAttributes="{data-sizes: 'auto'}"
-                />
             </div>
         </f:else>
     </f:if>
@@ -104,42 +70,25 @@ $GLOBALS['TCA']['pages']['types'][(string)\TYPO3\CMS\Frontend\Page\PageRepositor
             ]
         ]
     ],
-    'headerImageMobile' => [
-        'title' => 'Header Image Mobile',
-        'allowedAspectRatios' => [
-            '4:2' => [
-                'title' => 'Square 4:2',
-                'value' => 4 / 2,
-            ]
-        ],
-        'coverAreas' => [
-            [
-                'x' => 0.02,
-                'y' => 0.66,
-                'width' => 0.96,
-                'height' => 0.34,
-            ]
-        ]
-    ]
 ];
 ``` 
 
 ### JavaScripts
 
-I you want to support older browsers (e.g. IE) and/or use the bgset feature to create responsive background images,
+If you want to support older browsers (e.g. IE) and/or use the bgset feature to create responsive background images,
 you need to use the lazysizes library.
 
 #### JavaScript bundled with this extension
 
 The extension uses lazysizes.js along with the plugins respimg/ls.respimg.min.js, ls.parent-fit.min.js
-and ls.bgset.min.js which are all included Resources/Private and included by
+and ls.bgset.min.js which are all included in `Resources/Private` and included by
 
 ```
 page.includeJSFooterlibs {
 	lazysizes1respimg = EXT:viresponsiveimages/Resources/Private/Javascripts/lazysizes/plugins/respimg/ls.respimg.min.js
 	lazysizes2parentfit = EXT:viresponsiveimages/Resources/Private/Javascripts/lazysizes/plugins/parent-fit/ls.parent-fit.min.js
 	lazysizes3bgset = EXT:viresponsiveimages/Resources/Private/Javascripts/lazysizes/plugins/bgset/ls.bgset.min.js
-	lazysizes9core = EXT:viresponsiveimages/Resources/Private/Javascripts/lazysizes/lazysizes.min.js
+	lazysizes4core = EXT:viresponsiveimages/Resources/Private/Javascripts/lazysizes/lazysizes.min.js
 }
 ```
 
