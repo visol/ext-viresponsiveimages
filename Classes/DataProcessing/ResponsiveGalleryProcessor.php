@@ -2,11 +2,12 @@
 namespace Visol\Viresponsiveimages\DataProcessing;
 
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
+use TYPO3\CMS\Frontend\ContentObject\Exception\ContentRenderingException;
 use TYPO3\CMS\Frontend\DataProcessing\GalleryProcessor;
 
 /**
- * passing imageorient to fluid where a custom viewhelper handles the output of sourcesets
- * based on several settings and can be used for f.i. the CType "textmedia"
+ * Passing imageorient to fluid where a custom Viewhelper handles the output of source sets
+ * based on several settings and can be used for e.g. the CType "textmedia"
  */
 class ResponsiveGalleryProcessor extends GalleryProcessor
 {

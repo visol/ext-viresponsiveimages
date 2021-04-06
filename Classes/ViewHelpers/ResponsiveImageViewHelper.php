@@ -16,7 +16,8 @@ namespace Visol\Viresponsiveimages\ViewHelpers;
 
 use TYPO3\CMS\Core\Resource\Exception\ResourceDoesNotExistException;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+use TYPO3\CMS\Fluid\ViewHelpers\ImageViewHelper;
+use Visol\Viresponsiveimages\Service\SrcSetService;
 
 /**
  * Resizes a given image (if required) and renders the respective img tag
@@ -62,7 +63,7 @@ use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
  * Could not get image resource for "NonExistingImage.png".
  * </output>
  */
-class ResponsiveImageViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\ImageViewHelper
+class ResponsiveImageViewHelper extends ImageViewHelper
 {
 
     /**
@@ -70,21 +71,20 @@ class ResponsiveImageViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\ImageViewHe
      */
     const RATIO_PATTERN = '/(\d+):(\d+)/';
 
-
     /**
      * @var string
      */
     protected $tagName = 'img';
 
     /**
-     * @var \Visol\Viresponsiveimages\Service\SrcSetService
+     * @var SrcSetService
      */
     protected $srcSetService;
 
     /**
-     * @param \Visol\Viresponsiveimages\Service\SrcSetService $srcSetService
+     * @param SrcSetService $srcSetService
      */
-    public function injectSrcSetService(\Visol\Viresponsiveimages\Service\SrcSetService $srcSetService)
+    public function injectSrcSetService(SrcSetService $srcSetService)
     {
         $this->srcSetService = $srcSetService;
     }
@@ -159,7 +159,7 @@ class ResponsiveImageViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\ImageViewHe
             }
             $sizes = GeneralUtility::intExplode(',', $sizesCsv, true);
 
-            $srcSetString = $this->srcSetService->getSrcSetAttribute($image, $ratio, $maximumWidth, $maximumHeight, $crop, $cropVariant, $sizes, null);
+            $srcSetString = $this->srcSetService->getSrcSetAttribute($image, $ratio, $maximumWidth, $maximumHeight, $crop, $cropVariant, $sizes);
             $classNames = ['lazyload'];
             if (isset($this->arguments['class'])) {
                 $classNames[] = $this->arguments['class'];
