@@ -13,7 +13,11 @@ namespace Visol\Viresponsiveimages\ViewHelpers;
  * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General      *
  * Public License for more details.                                       *
  *                                                                        */
-
+use TYPO3\CMS\Extbase\Service\ImageService;
+use Visol\Viresponsiveimages\Service\SrcSetService;
+use TYPO3\CMS\Extbase\Object\ObjectManager;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Core\Resource\Exception\ResourceDoesNotExistException;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
@@ -81,7 +85,7 @@ class SrcSetViewHelper extends AbstractViewHelper
     /**
      * @param \TYPO3\CMS\Extbase\Service\ImageService $imageService
      */
-    public function injectImageService(\TYPO3\CMS\Extbase\Service\ImageService $imageService)
+    public function injectImageService(ImageService $imageService)
     {
         $this->imageService = $imageService;
     }
@@ -89,7 +93,7 @@ class SrcSetViewHelper extends AbstractViewHelper
     /**
      * @param \Visol\Viresponsiveimages\Service\SrcSetService $srcSetService
      */
-    public function injectSrcSetService(\Visol\Viresponsiveimages\Service\SrcSetService $srcSetService)
+    public function injectSrcSetService(SrcSetService $srcSetService)
     {
         $this->srcSetService = $srcSetService;
     }
@@ -142,7 +146,7 @@ class SrcSetViewHelper extends AbstractViewHelper
         $cropVariant = $this->arguments['cropVariant'];
 
         if ((is_null($this->arguments['src']) && is_null($this->arguments['image'])) || (!is_null($this->arguments['src']) && !is_null($this->arguments['image']))) {
-            throw new \TYPO3\CMS\Fluid\Core\ViewHelper\Exception('You must either specify a string src or a File object.', 1382284106);
+            throw new Exception('You must either specify a string src or a File object.', 1382284106);
         }
 
         try {
@@ -151,9 +155,9 @@ class SrcSetViewHelper extends AbstractViewHelper
             if ($this->arguments['sizes']) {
                 $sizesCsv = $this->arguments['sizes'];
             } else {
-                $objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Object\ObjectManager::class);
-                $configurationManager = $objectManager->get(\TYPO3\CMS\Extbase\Configuration\ConfigurationManager::class);
-                $extbaseFrameworkConfiguration = $configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
+                $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
+                $configurationManager = $objectManager->get(ConfigurationManager::class);
+                $extbaseFrameworkConfiguration = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
                 $sizesCsv = $extbaseFrameworkConfiguration['config.']['responsiveImage.']['sizes'];
             }
             $sizes = GeneralUtility::intExplode(',', $sizesCsv, true);

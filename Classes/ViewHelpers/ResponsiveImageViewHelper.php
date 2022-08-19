@@ -13,7 +13,10 @@ namespace Visol\Viresponsiveimages\ViewHelpers;
  * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General      *
  * Public License for more details.                                       *
  *                                                                        */
-
+use TYPO3Fluid\Fluid\Core\ViewHelper\Exception;
+use TYPO3\CMS\Extbase\Object\ObjectManager;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Core\Resource\Exception\ResourceDoesNotExistException;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Fluid\ViewHelpers\ImageViewHelper;
@@ -105,9 +108,11 @@ class ResponsiveImageViewHelper extends ImageViewHelper
             'string',
             'a path to a file, a combined FAL identifier or an uid (int).
             If $treatIdAsReference is set, the integer is considered the uid of the sys_file_reference record.
-            If you already got a FAL object, consider using the $image parameter instead'
+            If you already got a FAL object, consider using the $image parameter instead',
+            false,
+            ''
         );
-        $this->registerArgument('treatIdAsReference', 'bool', 'given src argument is a sys_file_reference record');
+        $this->registerArgument('treatIdAsReference', 'bool', 'given src argument is a sys_file_reference record', false, true);
         $this->registerArgument('image', 'object', 'a FAL object');
 
         $this->registerArgument('crop', 'string|bool', 'overrule cropping of image (setting to FALSE disables the cropping set in FileReference)');
@@ -125,7 +130,7 @@ class ResponsiveImageViewHelper extends ImageViewHelper
      *
      * @see https://docs.typo3.org/typo3cms/TyposcriptReference/ContentObjects/Image/
      *
-     * @throws \TYPO3\CMS\Fluid\Core\ViewHelper\Exception
+     * @throws \TYPO3Fluid\Fluid\Core\ViewHelper\Exception
      * @return string Rendered tag
      */
     public function render()
@@ -142,8 +147,8 @@ class ResponsiveImageViewHelper extends ImageViewHelper
         $crop = $this->arguments['crop'];
         $cropVariant = $this->arguments['cropVariant'];
 
-        if ((is_null($this->arguments['src']) && is_null($this->arguments['image'])) || (!is_null($this->arguments['src']) && !is_null($this->arguments['image']))) {
-            throw new \TYPO3\CMS\Fluid\Core\ViewHelper\Exception('You must either specify a string src or a File object.', 1382284106);
+        if (($this->arguments['src'] === '' && is_null($this->arguments['image'])) || ($this->arguments['src'] !== '' && !is_null($this->arguments['image']))) {
+            throw new Exception('You must either specify a string src or a File object.', 1382284106);
         }
 
         try {
@@ -152,9 +157,9 @@ class ResponsiveImageViewHelper extends ImageViewHelper
             if ($this->arguments['sizes']) {
                 $sizesCsv = $this->arguments['sizes'];
             } else {
-                $objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Object\ObjectManager::class);
-                $configurationManager = $objectManager->get(\TYPO3\CMS\Extbase\Configuration\ConfigurationManager::class);
-                $extbaseFrameworkConfiguration = $configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
+                $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
+                $configurationManager = $objectManager->get(ConfigurationManager::class);
+                $extbaseFrameworkConfiguration = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
                 $sizesCsv = $extbaseFrameworkConfiguration['config.']['responsiveImage.']['sizes'];
             }
             $sizes = GeneralUtility::intExplode(',', $sizesCsv, true);
