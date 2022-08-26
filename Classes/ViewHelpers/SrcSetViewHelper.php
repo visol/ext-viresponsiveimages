@@ -1,4 +1,5 @@
 <?php
+
 namespace Visol\Viresponsiveimages\ViewHelpers;
 
 /*                                                                        *
@@ -13,9 +14,9 @@ namespace Visol\Viresponsiveimages\ViewHelpers;
  * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General      *
  * Public License for more details.                                       *
  *                                                                        */
+
 use TYPO3\CMS\Extbase\Service\ImageService;
 use Visol\Viresponsiveimages\Service\SrcSetService;
-use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Core\Resource\Exception\ResourceDoesNotExistException;
@@ -73,17 +74,17 @@ class SrcSetViewHelper extends AbstractViewHelper
     const RATIO_PATTERN = '/(\d):(\d)/';
 
     /**
-     * @var \TYPO3\CMS\Extbase\Service\ImageService
+     * @var ImageService
      */
     protected $imageService;
 
     /**
-     * @var \Visol\Viresponsiveimages\Service\SrcSetService
+     * @var SrcSetService
      */
     protected $srcSetService;
 
     /**
-     * @param \TYPO3\CMS\Extbase\Service\ImageService $imageService
+     * @param ImageService $imageService
      */
     public function injectImageService(ImageService $imageService)
     {
@@ -91,7 +92,7 @@ class SrcSetViewHelper extends AbstractViewHelper
     }
 
     /**
-     * @param \Visol\Viresponsiveimages\Service\SrcSetService $srcSetService
+     * @param SrcSetService $srcSetService
      */
     public function injectSrcSetService(SrcSetService $srcSetService)
     {
@@ -108,9 +109,11 @@ class SrcSetViewHelper extends AbstractViewHelper
             'string',
             'a path to a file, a combined FAL identifier or an uid (int).
             If $treatIdAsReference is set, the integer is considered the uid of the sys_file_reference record.
-            If you already got a FAL object, consider using the $image parameter instead'
+            If you already got a FAL object, consider using the $image parameter instead',
+            false,
+            ''
         );
-        $this->registerArgument('treatIdAsReference', 'bool', 'given src argument is a sys_file_reference record');
+        $this->registerArgument('treatIdAsReference', 'bool', 'given src argument is a sys_file_reference record', false, false);
         $this->registerArgument('image', 'object', 'a FAL object');
 
         $this->registerArgument('crop', 'string|bool', 'overrule cropping of image (setting to FALSE disables the cropping set in FileReference)');
@@ -145,7 +148,7 @@ class SrcSetViewHelper extends AbstractViewHelper
         $crop = $this->arguments['crop'];
         $cropVariant = $this->arguments['cropVariant'];
 
-        if ((is_null($this->arguments['src']) && is_null($this->arguments['image'])) || (!is_null($this->arguments['src']) && !is_null($this->arguments['image']))) {
+        if (($this->arguments['src'] === '' && is_null($this->arguments['image'])) || ($this->arguments['src'] !== '' && !is_null($this->arguments['image']))) {
             throw new Exception('You must either specify a string src or a File object.', 1382284106);
         }
 
@@ -155,8 +158,7 @@ class SrcSetViewHelper extends AbstractViewHelper
             if ($this->arguments['sizes']) {
                 $sizesCsv = $this->arguments['sizes'];
             } else {
-                $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
-                $configurationManager = $objectManager->get(ConfigurationManager::class);
+                $configurationManager = GeneralUtility::makeInstance(ConfigurationManager::class);
                 $extbaseFrameworkConfiguration = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
                 $sizesCsv = $extbaseFrameworkConfiguration['config.']['responsiveImage.']['sizes'];
             }

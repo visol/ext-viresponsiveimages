@@ -1,4 +1,5 @@
 <?php
+
 namespace Visol\Viresponsiveimages\ViewHelpers;
 
 /*                                                                        *
@@ -13,8 +14,8 @@ namespace Visol\Viresponsiveimages\ViewHelpers;
  * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General      *
  * Public License for more details.                                       *
  *                                                                        */
+
 use TYPO3Fluid\Fluid\Core\ViewHelper\Exception;
-use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Core\Resource\Exception\ResourceDoesNotExistException;
@@ -112,7 +113,7 @@ class ResponsiveImageViewHelper extends ImageViewHelper
             false,
             ''
         );
-        $this->registerArgument('treatIdAsReference', 'bool', 'given src argument is a sys_file_reference record', false, true);
+        $this->registerArgument('treatIdAsReference', 'bool', 'given src argument is a sys_file_reference record', false, false);
         $this->registerArgument('image', 'object', 'a FAL object');
 
         $this->registerArgument('crop', 'string|bool', 'overrule cropping of image (setting to FALSE disables the cropping set in FileReference)');
@@ -130,12 +131,11 @@ class ResponsiveImageViewHelper extends ImageViewHelper
      *
      * @see https://docs.typo3.org/typo3cms/TyposcriptReference/ContentObjects/Image/
      *
-     * @throws \TYPO3Fluid\Fluid\Core\ViewHelper\Exception
+     * @throws Exception
      * @return string Rendered tag
      */
     public function render()
     {
-
         if (is_numeric($this->arguments['ratio'])) {
             $ratio = $this->arguments['ratio'];
         } elseif (preg_match(static::RATIO_PATTERN, $this->arguments['ratio'], $matches)) {
@@ -157,8 +157,7 @@ class ResponsiveImageViewHelper extends ImageViewHelper
             if ($this->arguments['sizes']) {
                 $sizesCsv = $this->arguments['sizes'];
             } else {
-                $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
-                $configurationManager = $objectManager->get(ConfigurationManager::class);
+                $configurationManager = GeneralUtility::makeInstance(ConfigurationManager::class);
                 $extbaseFrameworkConfiguration = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
                 $sizesCsv = $extbaseFrameworkConfiguration['config.']['responsiveImage.']['sizes'];
             }
