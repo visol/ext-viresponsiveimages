@@ -159,7 +159,7 @@ class ResponsiveImageViewHelper extends ImageViewHelper
             }
             $sizes = GeneralUtility::intExplode(',', $sizesCsv, true);
 
-            $srcSetString = $this->srcSetService->getSrcSetAttribute($image, $ratio, $maximumWidth, $maximumHeight, $crop, $cropVariant, $sizes);
+            $srcSetString = $this->srcSetService->getSrcSetAttribute($image, $ratio, $maximumWidth, $maximumHeight, $crop, $cropVariant, $sizes, $this->arguments['absolute']);
             $classNames = ['lazyload'];
             if (isset($this->arguments['class'])) {
                 $classNames[] = $this->arguments['class'];
