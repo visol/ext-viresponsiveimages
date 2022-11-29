@@ -1,5 +1,5 @@
 #
 # PageTS for viresponsiveimages
 #
+@import 'EXT:viresponsiveimages/Configuration/TSconfig/Page/TCEFORM.typoscript'
 @import 'EXT:viresponsiveimages/Configuration/TSconfig/Page/TCAdefaults.typoscript'
-@import 'EXT:viresponsiveimages/Configuration/TSconfig/Page/TCEMAIN.typoscript'
