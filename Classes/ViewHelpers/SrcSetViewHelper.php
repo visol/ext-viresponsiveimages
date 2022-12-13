@@ -158,7 +158,7 @@ class SrcSetViewHelper extends AbstractViewHelper
             }
             $sizes = GeneralUtility::intExplode(',', $sizesCsv, true);
 
-            $srcSetString = $this->srcSetService->getSrcSetAttribute($image, $ratio, $maximumWidth, $maximumHeight, $crop, $cropVariant, $sizes);
+            $srcSetString = $this->srcSetService->getSrcSetAttribute($image, $ratio, $maximumWidth, $maximumHeight, $crop, $cropVariant, $sizes, $this->arguments['absolute']);
         } catch (ResourceDoesNotExistException $e) {
             // thrown if file does not exist
         } catch (\UnexpectedValueException $e) {
