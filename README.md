@@ -1,11 +1,21 @@
 Responsive Images for TYPO3 CMS
-===
+===============================
 
 This extensions provides a `ResponsiveImageViewHelper` and a `SrcSetViewHelper` to provide responsive images based on
 the srcset approach. It supports crop variants, but also defining an own ratio.
 
 While srcset is [supported in most current browsers](https://caniuse.com/srcset), for background images a similar approach
 with a custom `data-bgset` attributes can be used.
+
+## Compatibility and Maintenance
+
+This package is currently maintained for the following versions:
+
+| TYPO3 Version         | Package Version | Branch  | Maintained    |
+|-----------------------|-----------------|---------|---------------|
+| TYPO3 11.5.x          | 2.x             | master  | Yes           |
+| TYPO3 10.4.x          | 1.x             | -       | No            |
+| TYPO3 9.5.x           | 0.9.x           | -       | No            |
 
 ### Usage in Fluid
 
