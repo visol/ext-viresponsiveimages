@@ -15,88 +15,37 @@ namespace Visol\Viresponsiveimages\ViewHelpers;
  * Public License for more details.                                       *
  *                                                                        */
 
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Exception;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Core\Resource\Exception\ResourceDoesNotExistException;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Fluid\ViewHelpers\ImageViewHelper;
 use Visol\Viresponsiveimages\Service\SrcSetService;
 
-/**
- * Resizes a given image (if required) and renders the respective img tag
- *
- * = Examples =
- *
- * <code title="Default">
- * <f:image src="EXT:myext/Resources/Public/typo3_logo.png" alt="alt text" />
- * </code>
- * <output>
- * <img alt="alt text" src="typo3conf/ext/myext/Resources/Public/typo3_logo.png" width="396" height="375" />
- * or (in BE mode):
- * <img alt="alt text" src="../typo3conf/ext/viewhelpertest/Resources/Public/typo3_logo.png" width="396" height="375" />
- * </output>
- *
- * <code title="Image Object">
- * <f:image image="{imageObject}" />
- * </code>
- * <output>
- * <img alt="alt set in image record" src="fileadmin/_processed_/323223424.png" width="396" height="375" />
- * </output>
- *
- * <code title="Inline notation">
- * {f:image(src: 'EXT:viewhelpertest/Resources/Public/typo3_logo.png', alt: 'alt text', minWidth: 30, maxWidth: 40)}
- * </code>
- * <output>
- * <img alt="alt text" src="../typo3temp/assets/images/f13d79a526.png" width="40" height="38" />
- * (depending on your TYPO3s encryption key)
- * </output>
- *
- * <code title="Other resource type (e.g. PDF)">
- * <f:image src="fileadmin/user_upload/example.pdf" alt="foo" />
- * </code>
- * <output>
- * If your graphics processing library is set up correctly then it will output a thumbnail of the first page of your PDF document.
- * <img src="fileadmin/_processed_/1/2/csm_example_aabbcc112233.gif" width="200" height="284" alt="foo">
- * </output>
- *
- * <code title="Non-existent image">
- * <f:image src="NonExistingImage.png" alt="foo" />
- * </code>
- * <output>
- * Could not get image resource for "NonExistingImage.png".
- * </output>
- */
-class ResponsiveImageViewHelper extends ImageViewHelper
+class ResponsiveImageViewHelper extends AbstractTagBasedViewHelper
 {
 
     /**
      * allow multidigit ratio values like 1024:768 or 4:3
      */
-    const RATIO_PATTERN = '/(\d+):(\d+)/';
+    public const RATIO_PATTERN = '/(\d+):(\d+)/';
 
     /**
      * @var string
      */
     protected $tagName = 'img';
 
-    /**
-     * @var SrcSetService
-     */
-    protected $srcSetService;
-
-    /**
-     * @param SrcSetService $srcSetService
-     */
-    public function injectSrcSetService(SrcSetService $srcSetService)
-    {
-        $this->srcSetService = $srcSetService;
+    public function __construct(
+        protected SrcSetService $srcSetService
+    ){
+        parent::__construct();
     }
 
     /**
      * Initialize arguments.
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         $this->registerArgument('additionalAttributes', 'array', 'Additional tag attributes. They will be added directly to the resulting HTML tag.', false);
         $this->registerArgument('data', 'array', 'Additional data-* attributes. They will each be added with a "data-" prefix.', false);
@@ -134,7 +83,7 @@ class ResponsiveImageViewHelper extends ImageViewHelper
      * @throws Exception
      * @return string Rendered tag
      */
-    public function render()
+    public function render(): string
     {
         if (is_numeric($this->arguments['ratio'])) {
             $ratio = $this->arguments['ratio'];

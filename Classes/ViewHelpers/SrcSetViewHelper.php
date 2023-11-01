@@ -16,12 +16,12 @@ namespace Visol\Viresponsiveimages\ViewHelpers;
  *                                                                        */
 
 use TYPO3\CMS\Extbase\Service\ImageService;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper;
 use Visol\Viresponsiveimages\Service\SrcSetService;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Core\Resource\Exception\ResourceDoesNotExistException;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Exception;
 
 /**
@@ -68,35 +68,17 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\Exception;
  * Could not get image resource for "NonExistingImage.png".
  * </output>
  */
-class SrcSetViewHelper extends AbstractViewHelper
+class SrcSetViewHelper extends AbstractTagBasedViewHelper
 {
 
-    const RATIO_PATTERN = '/(\d):(\d)/';
+    public const RATIO_PATTERN = '/(\d):(\d)/';
 
-    /**
-     * @var ImageService
-     */
-    protected $imageService;
-
-    /**
-     * @var SrcSetService
-     */
-    protected $srcSetService;
-
-    /**
-     * @param ImageService $imageService
-     */
-    public function injectImageService(ImageService $imageService)
+    public function __construct(
+        protected ImageService $imageService,
+        protected SrcSetService $srcSetService
+    )
     {
-        $this->imageService = $imageService;
-    }
-
-    /**
-     * @param SrcSetService $srcSetService
-     */
-    public function injectSrcSetService(SrcSetService $srcSetService)
-    {
-        $this->srcSetService = $srcSetService;
+        parent::__construct();
     }
 
     /**
@@ -136,7 +118,6 @@ class SrcSetViewHelper extends AbstractViewHelper
      */
     public function render()
     {
-
         if (is_numeric($this->arguments['ratio'])) {
             $ratio = $this->arguments['ratio'];
         } elseif (preg_match(static::RATIO_PATTERN, $this->arguments['ratio'], $matches)) {
