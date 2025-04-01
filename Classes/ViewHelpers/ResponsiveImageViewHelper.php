@@ -185,8 +185,13 @@ class ResponsiveImageViewHelper extends ImageViewHelper
             if (empty($this->arguments['alt'])) {
                 $this->tag->addAttribute('alt', $alt);
             }
-            if (empty($this->arguments['title']) && $title) {
-                $this->tag->addAttribute('title', $title);
+            // render title attribute only if title is set as viewhelper argument
+            if (isset($this->arguments['title']) && !empty(trim($this->arguments['title']))) {
+                $this->tag->addAttribute('title', $this->arguments['title']);
+            }
+            else {
+                // remove title attribute set by registerUniversalTagAttributes() to avoid empty " " title attribute
+                $this->tag->removeAttribute('title');
             }
         } catch (ResourceDoesNotExistException $e) {
             // thrown if file does not exist

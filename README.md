@@ -19,6 +19,9 @@ This package is currently maintained for the following versions:
 
 ### Usage in Fluid
 
+#### Usage Example
+
+This example ist showing the setup for a header image, added in the page properties in a desktop and mobile version. Sidenote: title="" to suppress the title attribute in the image tag.
 This example is showing the setup for a header image, added in the page properties in a desktop and mobile version.
 
 Add ```{namespace viresp=Visol\Viresponsiveimages\ViewHelpers}```
@@ -36,14 +39,34 @@ to your Fluid template
                     class="img-cropped"
                     alt="{page.files.0.properties.alternative}"
                     additionalAttributes="{data-sizes: 'auto'}"
+                    title="{page.files.0.properties.title}"
             />
+            </div>
+            <div class="img-mobile hidden-sm hidden-md hidden-lg">
+                <f:comment>
+                    mobile image:
+                    if set in editor 'teaserImageMobile' cropping is applied.
+                    if not, the image is cropped in the given ratio from the center
+                </f:comment>
+                <viresp:responsiveImage
+                        cropVariant="headerImageMobile"
+                        treatIdAsReference="true"
+                        ratio="4:2"
+                        sizes="320,640"
+                        src="{page.files.0.uid}"
+                        class="img-autocropped"
+                        alt="{page.files.0.properties.alternative}"
+                        additionalAttributes="{data-sizes: 'auto'}"
+                        title="{page.files.0.properties.title}"
+                />
             </div>
         </f:then>
         <f:else>
             <div class="img-desktop hidden-xs">
                 <f:comment>
-                    no image cropping has been seleted in the editor:
-                    the image will be cropped in the given ratio relative to the center
+                    no image cropping as ben seleted in the editor:
+                    the image weill be cropped in the given ratio relative to the center
+                    for desktop the full range of sizes will be generated
                 </f:comment>
                 <viresp:responsiveImage
                     treatIdAsReference="true"
@@ -52,7 +75,25 @@ to your Fluid template
                     class="img-autocropped"
                     alt="{page.files.0.properties.alternative}"
                     additionalAttributes="{data-sizes: 'auto'}"
+                    title="{page.files.0.properties.title}"
             />
+            </div>
+            <div class="img-mobile hidden-sm hidden-md hidden-lg">
+                <f:comment>
+                    no image cropping as ben seleted in the editor:
+                    the image weill be cropped in the given ratio relative to the center
+                    for mobile only the given sizes (comma separated) will be generated
+                </f:comment>
+                <viresp:responsiveImage
+                        treatIdAsReference="true"
+                        ratio="4:2"
+                        sizes="320,640"
+                        src="{page.files.0.uid}"
+                        class="img-autocropped"
+                        alt="{page.files.0.properties.alternative}"
+                        additionalAttributes="{data-sizes: 'auto'}"
+                        title="{page.files.0.properties.title}"
+                />
             </div>
         </f:else>
     </f:if>
@@ -80,6 +121,23 @@ $GLOBALS['TCA']['pages']['types'][(string)\TYPO3\CMS\Frontend\Page\PageRepositor
             ]
         ]
     ],
+    'headerImageMobile' => [
+        'title' => 'Header Image Mobile',
+        'allowedAspectRatios' => [
+            '4:2' => [
+                'title' => 'Square 4:2',
+                'value' => 4 / 2,
+            ]
+        ],
+        'coverAreas' => [
+            [
+                'x' => 0.02,
+                'y' => 0.66,
+                'width' => 0.96,
+                'height' => 0.34,
+            ]
+        ]
+    ]
 ];
 ``` 
 
