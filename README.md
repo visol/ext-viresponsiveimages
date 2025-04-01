@@ -11,18 +11,18 @@ with a custom `data-bgset` attributes can be used.
 
 This package is currently maintained for the following versions:
 
-| TYPO3 Version         | Package Version | Branch  | Maintained    |
-|-----------------------|-----------------|---------|---------------|
-| TYPO3 11.5.x          | 2.x             | master  | Yes           |
-| TYPO3 10.4.x          | 1.x             | -       | No            |
-| TYPO3 9.5.x           | 0.9.x           | -       | No            |
+| TYPO3 Version | Package Version | Branch | Maintained |
+|---------------|-----------------|--------|------------|
+| TYPO3 12.4.x  | 3.x             | master | Yes        |
+| TYPO3 11.5.x  | 2.x             | -      | No         |
+| TYPO3 10.4.x  | 1.x             | -      | No         |
+| TYPO3 9.5.x   | 0.9.x           | -      | No         |
 
 ### Usage in Fluid
 
 #### Usage Example
 
-This example ist showing the setup for a header image, added in the page properties in a desktop and mobile version. Sidenote: title="" to suppress the title attribute in the image tag.
-This example is showing the setup for a header image, added in the page properties in a desktop and mobile version.
+This example ist showing the setup for a header image, added in the page properties in a desktop and mobile version. Sidenote: title="" to suppress the optional title attribute in the image tag.
 
 Add ```{namespace viresp=Visol\Viresponsiveimages\ViewHelpers}```
 to your Fluid template
