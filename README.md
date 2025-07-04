@@ -153,10 +153,10 @@ and ls.bgset.min.js which are all included in `Resources/Private` and included b
 
 ```
 page.includeJSFooterlibs {
-	lazysizes1respimg = EXT:viresponsiveimages/Resources/Private/Javascripts/lazysizes/plugins/respimg/ls.respimg.min.js
-	lazysizes2parentfit = EXT:viresponsiveimages/Resources/Private/Javascripts/lazysizes/plugins/parent-fit/ls.parent-fit.min.js
-	lazysizes3bgset = EXT:viresponsiveimages/Resources/Private/Javascripts/lazysizes/plugins/bgset/ls.bgset.min.js
-	lazysizes4core = EXT:viresponsiveimages/Resources/Private/Javascripts/lazysizes/lazysizes.min.js
+	lazysizes1respimg = EXT:viresponsiveimages/Resources/Public/Javascripts/lazysizes/plugins/respimg/ls.respimg.min.js
+	lazysizes2parentfit = EXT:viresponsiveimages/Resources/Public/Javascripts/lazysizes/plugins/parent-fit/ls.parent-fit.min.js
+	lazysizes3bgset = EXT:viresponsiveimages/Resources/Public/Javascripts/lazysizes/plugins/bgset/ls.bgset.min.js
+	lazysizes4core = EXT:viresponsiveimages/Resources/Public/Javascripts/lazysizes/lazysizes.min.js
 }
 ```
 
