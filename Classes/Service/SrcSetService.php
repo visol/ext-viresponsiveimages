@@ -60,7 +60,7 @@ class SrcSetService
             throw new \Exception('No asset given for rendering.', 1519844659);
         }
 
-        if ($image->getProperty('type') == AbstractFile::FILETYPE_IMAGE) {
+        if ($image->getProperty('type') == FileType::IMAGE->value) {
             $assetWidth = $image->getProperty('width');
             $assetHeight = $image->getProperty('height');
         }

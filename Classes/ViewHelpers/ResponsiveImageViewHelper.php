@@ -67,8 +67,7 @@ class ResponsiveImageViewHelper extends AbstractTagBasedViewHelper
         $this->registerArgument('additionalAttributes', 'array', 'Additional tag attributes. They will be added directly to the resulting HTML tag.', false);
         $this->registerArgument('data', 'array', 'Additional data-* attributes. They will each be added with a "data-" prefix.', false);
 
-        $this->registerUniversalTagAttributes();
-        $this->registerTagAttribute('alt', 'string', 'Specifies an alternate text for an image', false);
+        $this->registerArgument('alt', 'string', 'Specifies an alternate text for an image', false);
 
         $this->registerArgument(
             'src',
