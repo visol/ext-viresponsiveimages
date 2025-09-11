@@ -13,7 +13,8 @@ This package is currently maintained for the following versions:
 
 | TYPO3 Version | Package Version | Branch | Maintained |
 |---------------|-----------------|--------|------------|
-| TYPO3 12.4.x  | 3.x             | master | Yes        |
+| TYPO3 13.4.x  | 4.x             | master | Yes        |
+| TYPO3 12.4.x  | 3.x             | -      | No         |
 | TYPO3 11.5.x  | 2.x             | -      | No         |
 | TYPO3 10.4.x  | 1.x             | -      | No         |
 | TYPO3 9.5.x   | 0.9.x           | -      | No         |
@@ -153,10 +154,10 @@ and ls.bgset.min.js which are all included in `Resources/Private` and included b
 
 ```
 page.includeJSFooterlibs {
-	lazysizes1respimg = EXT:viresponsiveimages/Resources/Private/Javascripts/lazysizes/plugins/respimg/ls.respimg.min.js
-	lazysizes2parentfit = EXT:viresponsiveimages/Resources/Private/Javascripts/lazysizes/plugins/parent-fit/ls.parent-fit.min.js
-	lazysizes3bgset = EXT:viresponsiveimages/Resources/Private/Javascripts/lazysizes/plugins/bgset/ls.bgset.min.js
-	lazysizes4core = EXT:viresponsiveimages/Resources/Private/Javascripts/lazysizes/lazysizes.min.js
+	lazysizes1respimg = EXT:viresponsiveimages/Resources/Public/Javascripts/lazysizes/plugins/respimg/ls.respimg.min.js
+	lazysizes2parentfit = EXT:viresponsiveimages/Resources/Public/Javascripts/lazysizes/plugins/parent-fit/ls.parent-fit.min.js
+	lazysizes3bgset = EXT:viresponsiveimages/Resources/Public/Javascripts/lazysizes/plugins/bgset/ls.bgset.min.js
+	lazysizes4core = EXT:viresponsiveimages/Resources/Public/Javascripts/lazysizes/lazysizes.min.js
 }
 ```
 

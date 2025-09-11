@@ -14,6 +14,7 @@ namespace Visol\Viresponsiveimages\Service;
 use TYPO3\CMS\Core\Imaging\ImageManipulation\CropVariantCollection;
 use TYPO3\CMS\Core\Resource\AbstractFile;
 use TYPO3\CMS\Core\Resource\FileInterface;
+use TYPO3\CMS\Core\Resource\FileType;
 use TYPO3\CMS\Extbase\Service\ImageService;
 
 /**
@@ -60,7 +61,7 @@ class SrcSetService
             throw new \Exception('No asset given for rendering.', 1519844659);
         }
 
-        if ($image->getProperty('type') == AbstractFile::FILETYPE_IMAGE) {
+        if ($image->getProperty('type') == FileType::IMAGE->value) {
             $assetWidth = $image->getProperty('width');
             $assetHeight = $image->getProperty('height');
         }
