@@ -1,3 +1,2 @@
 @import 'EXT:viresponsiveimages/Configuration/TSconfig/Page/All.typoscript'
-@import 'EXT:viresponsiveimages/Configuration/TypoScript/constants.typoscript'
-@import 'EXT:viresponsiveimages/Configuration/TypoScript/setup.typoscript'
+
