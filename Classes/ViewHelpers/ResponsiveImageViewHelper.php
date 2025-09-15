@@ -149,13 +149,10 @@ class ResponsiveImageViewHelper extends AbstractTagBasedViewHelper
                 ]
             );
 
-            $alt = $image->getProperty('alternative');
             $title = $image->getProperty('title');
 
             // The alt-attribute is mandatory to have valid html-code, therefore add it even if it is empty
-            if (empty($this->arguments['alt'])) {
-                $this->tag->addAttribute('alt', $alt);
-            }
+            $this->tag->addAttribute('alt', $this->arguments['alt'] ?: $image->getProperty('alternative') ?: '');
             // render title attribute only if title is set as viewhelper argument
             if (isset($this->arguments['title']) && !empty(trim($this->arguments['title']))) {
                 $this->tag->addAttribute('title', $this->arguments['title']);
