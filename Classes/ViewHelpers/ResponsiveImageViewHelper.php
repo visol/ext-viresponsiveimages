@@ -67,7 +67,13 @@ class ResponsiveImageViewHelper extends AbstractTagBasedViewHelper
         $this->registerArgument('additionalAttributes', 'array', 'Additional tag attributes. They will be added directly to the resulting HTML tag.', false);
         $this->registerArgument('data', 'array', 'Additional data-* attributes. They will each be added with a "data-" prefix.', false);
 
-        $this->registerArgument('alt', 'string', 'Specifies an alternate text for an image', false);
+        $this->registerArgument('class', 'string', 'CSS class(es) for this element');
+        $this->registerArgument('dir', 'string', 'Text direction for this HTML element. Allowed strings: "ltr" (left to right), "rtl" (right to left)');
+        $this->registerArgument('id', 'string', 'Unique (in this file) identifier for this HTML element.');
+        $this->registerArgument('lang', 'string', 'Language for this element. Use short names specified in RFC 1766');
+        $this->registerArgument('style', 'string', 'Individual CSS styles for this element');
+        $this->registerArgument('title', 'string', 'Tooltip text of element');
+        $this->registerArgument('alt', 'string', 'Specifies an alternate text for an image');
 
         $this->registerArgument(
             'src',
