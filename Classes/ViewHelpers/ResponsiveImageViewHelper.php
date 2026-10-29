@@ -95,6 +95,8 @@ class ResponsiveImageViewHelper extends AbstractTagBasedViewHelper
         $this->registerArgument('maxWidth', 'int', 'maximum width of the image');
         $this->registerArgument('maxHeight', 'int', 'maximum height of the image');
         $this->registerArgument('absolute', 'bool', 'Force absolute URL', false, false);
+        $this->registerArgument('eager', 'bool', 'Load the image right away with high priority instead of lazily via lazysizes, e.g. for the LCP image', false, false);
+        $this->registerArgument('eagerSizes', 'string', 'Value of the sizes attribute of an eager image, as there is no lazysizes to compute it', false, '100vw');
     }
 
     /**
@@ -134,20 +136,45 @@ class ResponsiveImageViewHelper extends AbstractTagBasedViewHelper
             }
             $sizes = GeneralUtility::intExplode(',', $sizesCsv, true);
 
-            $srcSetString = $this->srcSetService->getSrcSetAttribute($image, $ratio, $maximumWidth, $maximumHeight, $crop, $cropVariant, $sizes, $this->arguments['absolute']);
-            $classNames = ['lazyload'];
-            if (isset($this->arguments['class'])) {
-                $classNames[] = $this->arguments['class'];
-            }
+            $srcSetCandidates = $this->srcSetService->getSrcSetCandidates($image, $ratio, $maximumWidth, $maximumHeight, $crop, $cropVariant, $sizes, $this->arguments['absolute']);
+            $srcSetString = $this->srcSetService->renderSrcSetAttribute($srcSetCandidates);
 
-            $this->tag->addAttributes(
-                [
-                    'class' => implode(' ', $classNames),
-                    'data-sizes' => 'auto',
-                    'data-srcset' => $srcSetString,
-                    'srcset' => 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=='
-                ]
-            );
+            if ($this->arguments['eager'] && $srcSetCandidates !== []) {
+                $largestCandidate = $srcSetCandidates[0];
+                foreach ($srcSetCandidates as $candidate) {
+                    if ($candidate['width'] > $largestCandidate['width']) {
+                        $largestCandidate = $candidate;
+                    }
+                }
+
+                if (isset($this->arguments['class'])) {
+                    $this->tag->addAttribute('class', $this->arguments['class']);
+                }
+                $this->tag->addAttributes(
+                    [
+                        'src' => $largestCandidate['uri'],
+                        'srcset' => $srcSetString,
+                        'sizes' => $this->arguments['eagerSizes'],
+                        'width' => $largestCandidate['width'],
+                        'height' => $largestCandidate['height'],
+                        'fetchpriority' => 'high',
+                    ]
+                );
+            } else {
+                $classNames = ['lazyload'];
+                if (isset($this->arguments['class'])) {
+                    $classNames[] = $this->arguments['class'];
+                }
+
+                $this->tag->addAttributes(
+                    [
+                        'class' => implode(' ', $classNames),
+                        'data-sizes' => 'auto',
+                        'data-srcset' => $srcSetString,
+                        'srcset' => 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=='
+                    ]
+                );
+            }
 
             $title = $image->getProperty('title');
 
