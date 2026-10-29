@@ -101,6 +101,23 @@ to your Fluid template
 </f:if>
 ```
 
+#### Eager loading, e.g. for the LCP image
+
+All images are lazy-loaded by lazysizes, so the browser only requests them after the JavaScript has run. For the image
+that is visible right away (e.g. the first slide of a header slider), set `eager`. The image is then rendered with a real
+`srcset`, a `src`, `width` and `height` from the largest candidate and `fetchpriority="high"`. As lazysizes does not
+compute `sizes` for it, pass the rendered width with `eagerSizes` (default `100vw`).
+
+```
+<viresp:responsiveImage
+    image="{image}"
+    sizes="480,640,800,960"
+    ratio="2.10"
+    eager="{iterator.isFirst}"
+    eagerSizes="(min-width: 960px) 960px, 100vw"
+/>
+```
+
 The corresponding image editor setup in ```YourSitePackage/Configuration/TCA/Overrides/pages.php``` would look like this:
 
 ```

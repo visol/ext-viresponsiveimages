@@ -152,6 +152,7 @@ class SrcSetViewHelper extends AbstractViewHelper
             throw new Exception('You must either specify a string src or a File object.', 1382284106);
         }
 
+        $srcSetString = '';
         try {
             $image = $this->imageService->getImage($this->arguments['src'], $this->arguments['image'], $this->arguments['treatIdAsReference']);
 
