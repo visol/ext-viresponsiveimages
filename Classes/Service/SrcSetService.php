@@ -53,6 +53,40 @@ class SrcSetService
      */
     public function getSrcSetAttribute($image, $ratio, $maximumWidth, $maximumHeight, $crop, $cropVariant, array $sizes, $absolute = false)
     {
+        return $this->renderSrcSetAttribute(
+            $this->getSrcSetCandidates($image, $ratio, $maximumWidth, $maximumHeight, $crop, $cropVariant, $sizes, $absolute)
+        );
+    }
+
+    /**
+     * @param array<array{uri: string, width: int, height: int}> $candidates
+     */
+    public function renderSrcSetAttribute(array $candidates): string
+    {
+        $srcSetData = [];
+        foreach ($candidates as $candidate) {
+            $srcSetData[] = $candidate['uri'] . ' ' . $candidate['width'] . 'w ' . $candidate['height'] . 'h ';
+        }
+
+        return implode(', ', $srcSetData);
+    }
+
+    /**
+     * Returns the processed images of the srcset, in the order of the given sizes
+     *
+     * @param FileInterface $image
+     * @param float $ratio
+     * @param int $maximumWidth
+     * @param int $maximumHeight
+     * @param string $crop
+     * @param string $cropVariant
+     * @param array $sizes
+     * @param boolean $absolute
+     * @return array<array{uri: string, width: int, height: int}>
+     * @throws \Exception
+     */
+    public function getSrcSetCandidates($image, $ratio, $maximumWidth, $maximumHeight, $crop, $cropVariant, array $sizes, $absolute = false): array
+    {
         if (!is_array($sizes) || !count($sizes) > 0) {
             throw new \Exception('No sizes defined.', 1519837126);
         }
@@ -74,7 +108,7 @@ class SrcSetService
         $cropVariant = $cropVariant ?: 'default';
         $cropArea = $cropVariantCollection->getCropArea($cropVariant);
 
-        $srcSetData = [];
+        $candidates = [];
         foreach ($sizes as $size) {
             $currentWidth = null;
             $currentMaximumWidth = $size;
@@ -118,9 +152,13 @@ class SrcSetService
                 continue;
             }
 
-            $srcSetData[] = $imageUri . ' ' . $processedImage->getProperty('width') . 'w ' . $processedImage->getProperty('height') . 'h ';
+            $candidates[] = [
+                'uri' => $imageUri,
+                'width' => (int)$processedImage->getProperty('width'),
+                'height' => (int)$processedImage->getProperty('height'),
+            ];
         }
 
-        return implode(', ', $srcSetData);
+        return $candidates;
     }
 }
