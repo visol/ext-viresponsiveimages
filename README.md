@@ -118,6 +118,18 @@ compute `sizes` for it, pass the rendered width with `eagerSizes` (default `100v
 />
 ```
 
+If the template does not know whether its image comes first, e.g. in a partial used for every content element, use
+`eagerIfFirst`. The image is eager unless an eager image was already rendered in this request, all later ones stay lazy:
+
+```
+<viresp:responsiveImage
+    image="{image}"
+    sizes="480,640,800,960"
+    eagerIfFirst="1"
+    eagerSizes="(min-width: 1024px) 400px, 100vw"
+/>
+```
+
 The corresponding image editor setup in ```YourSitePackage/Configuration/TCA/Overrides/pages.php``` would look like this:
 
 ```

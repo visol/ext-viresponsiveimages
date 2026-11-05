@@ -46,6 +46,11 @@ class ResponsiveImageViewHelper extends AbstractTagBasedViewHelper
     protected ImageService $imageService;
 
     /**
+     * A page is rendered in one request, PHP resets this between requests
+     */
+    protected static bool $eagerImageRendered = false;
+
+    /**
      * @param SrcSetService $srcSetService
      */
     public function injectSrcSetService(SrcSetService $srcSetService)
@@ -96,6 +101,7 @@ class ResponsiveImageViewHelper extends AbstractTagBasedViewHelper
         $this->registerArgument('maxHeight', 'int', 'maximum height of the image');
         $this->registerArgument('absolute', 'bool', 'Force absolute URL', false, false);
         $this->registerArgument('eager', 'bool', 'Load the image right away with high priority instead of lazily via lazysizes, e.g. for the LCP image', false, false);
+        $this->registerArgument('eagerIfFirst', 'bool', 'Load the image right away like eager, unless an eager image was already rendered in this request', false, false);
         $this->registerArgument('eagerSizes', 'string', 'Value of the sizes attribute of an eager image, as there is no lazysizes to compute it', false, '100vw');
     }
 
@@ -139,7 +145,10 @@ class ResponsiveImageViewHelper extends AbstractTagBasedViewHelper
             $srcSetCandidates = $this->srcSetService->getSrcSetCandidates($image, $ratio, $maximumWidth, $maximumHeight, $crop, $cropVariant, $sizes, $this->arguments['absolute']);
             $srcSetString = $this->srcSetService->renderSrcSetAttribute($srcSetCandidates);
 
-            if ($this->arguments['eager'] && $srcSetCandidates !== []) {
+            $eager = $this->arguments['eager'] || ($this->arguments['eagerIfFirst'] && !self::$eagerImageRendered);
+            if ($eager && $srcSetCandidates !== []) {
+                self::$eagerImageRendered = true;
+
                 $largestCandidate = $srcSetCandidates[0];
                 foreach ($srcSetCandidates as $candidate) {
                     if ($candidate['width'] > $largestCandidate['width']) {

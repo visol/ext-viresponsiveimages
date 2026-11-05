@@ -1,6 +1,7 @@
 ## Unreleased
 
 [FEATURE] Add `eager` argument to the ResponsiveImageViewHelper: renders a real srcset, src, width and height with `fetchpriority="high"` instead of lazy-loading via lazysizes, e.g. for the LCP image. `eagerSizes` sets the sizes attribute (default `100vw`).
+[FEATURE] Add `eagerIfFirst` argument to the ResponsiveImageViewHelper: the image is eager unless an eager image was already rendered in this request, e.g. for a partial used for every content element
 [BUGFIX] Return an empty srcset from the SrcSetViewHelper instead of an undefined variable when the image cannot be processed
 
 ## 3.0.0 (2025-04-01)
